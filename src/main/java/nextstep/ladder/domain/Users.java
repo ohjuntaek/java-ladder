@@ -11,10 +11,10 @@ public class Users {
     }
 
     public static Users of(String personsRaw) {
-        String[] split = personsRaw.split(",");
+        String[] splitPersonsRaw = personsRaw.split(",");
         List<User> users = new ArrayList<>();
-        for (int i = 0; i < split.length; i++) {
-            users.add(new User(split[i]));
+        for (String personRaw : splitPersonsRaw) {
+            users.add(new User(personRaw.trim()));
         }
         return new Users(users);
     }
