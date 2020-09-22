@@ -11,10 +11,12 @@ public class Line {
     private final List<Boolean> points = new ArrayList<>();
 
     public Line(int countOfPersons) {
+        if (countOfPersons <= 1) {
+            return;
+        }
         points.add(random.nextBoolean());
-        int pointNumber = countOfPersons - 1;
 
-        for (int i = 1; i < pointNumber; i++) {
+        for (int i = 1; i < countOfPersons - 1; i++) {
             addPoint(i);
         }
     }
@@ -37,5 +39,9 @@ public class Line {
         return points.stream()
                 .map(LineRaw::getRawByIsDrawn)
                 .collect(Collectors.joining("", "|", ""));
+    }
+
+    public int getCount() {
+        return points.size();
     }
 }
